@@ -1,3 +1,12 @@
+/*Añadimos certificado, protocolo TLS para conexión*/
+const https = require("https"),
+fs = require("fs");
+
+const options = {
+  key: fs.readFileSync("/srv/www/keys/my-site-key.pem"),
+  cert: fs.readFileSync("/srv/www/keys/chain.pem")
+};
+
 var express = require("express"),
 app = express(),
 bodyParser = require("body-parser"),
@@ -23,9 +32,12 @@ var user_routes = require('./routes/user');
 
 
 //You can access to the routes with this links
-app.use('/rateart_backend', user_routes);
+app.use('/authentication', user_routes);
 
 //Start node server
-app.listen(3000, function() {
-  console.log("Node server running on https://localhost:3000");
+https.createServer(options, app).listen(8080, function() {
+  console.log("Node server running on https://localhost:8080");
 });
+/*app.listen(3000, function() {
+  console.log("Node server running on https://localhost:3000");
+});*/
