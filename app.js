@@ -15,6 +15,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
+//Resources
+app.use(express.static(__dirname + 'public')); //Serves resources from public folder
+
 // User routes
 var user_routes = require('./routes/user');
 
