@@ -3,8 +3,9 @@ const https = require("https"),
 fs = require("fs");
 
 const options = {
-  key: fs.readFileSync("/srv/www/keys/my-site-key.pem"),
-  cert: fs.readFileSync("/srv/www/keys/chain.pem")
+  key: fs.readFileSync("/etc/letsencrypt/live/www.app.losuratech.com/privkey.pem", 'utf8'),
+  cert: fs.readFileSync("/etc/letsencrypt/live/www.app.losuratech.com/cert.pem"),
+  ca: fs.readFileSync('/etc/letsencrypt/live/www.app.losuratech.com/chain.pem', 'utf8')
 };
 
 var express = require("express"),
@@ -13,7 +14,7 @@ bodyParser = require("body-parser"),
 methodOverride = require("method-override");
 mongoose = require('mongoose');
 
-var url = "mongodb://localhost:27017/rateart_backend";
+var url = "mongodb://127.0.0.1:27017/authentication";
 
 //DB connection
 mongoose.set('useCreateIndex', true);
@@ -25,7 +26,7 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 //Resources
-app.use(express.static(__dirname + 'public')); //Serves resources from public folder
+app.use(express.static(__dirname + '/public', { dotfiles: 'allow'})); //Serves resources from public folder
 
 // User routes
 var user_routes = require('./routes/user');
@@ -35,9 +36,9 @@ var user_routes = require('./routes/user');
 app.use('/authentication', user_routes);
 
 //Start node server
-https.createServer(options, app).listen(8080, function() {
-  console.log("Node server running on https://localhost:8080");
+https.createServer(options, app).listen(443, function() {
+  console.log("Node server running on https://localhost:443");
 });
-/*app.listen(3000, function() {
-  console.log("Node server running on https://localhost:3000");
+/*app.listen(80, function() {
+  console.log("Node server running on http://localhost:80");
 });*/

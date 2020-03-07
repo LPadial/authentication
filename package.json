@@ -1,12 +1,12 @@
 {
-  "name": "rateart_backend",
+  "name": "authentication",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "startLocal": "nodemon C:\\Users\\laura\\Desktop\\Universidad\\DDSS\\PEF\\rateartBackend\\app.js",
-    "startdev": "nodemon /root/rateart_backend/rateartBackend/app.js"
+    "startdev": "nodemon /var/www/authentication/app.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
