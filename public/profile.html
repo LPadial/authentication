@@ -12,6 +12,13 @@
     <title>PEF - DDSS</title>
   </head>
   <body>
+    <style>
+      .form-control {
+        border: none;
+        background-color: #E5E5E5;
+        text-decoration: underline;
+      }
+    </style>
     <div class="d-md-flex h-md-100 align-items-center">
     
         <!-- First Half -->
@@ -19,39 +26,27 @@
             <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
                 <div class="logoarea pt-0 pb-5">
 
-                    <form class="form-signin d-flex flex-column text-left">
-                      <img class="mb-4" src="https://ciberseg.uah.es/master/images/logo_grande.png" alt="" width="auto" height="150">
-                      <h1 class="h3 mb-3 font-weight-normal text-center">Register</h1>
-                      <div class="form-group mb-2">
-                        <label for="inputEmail">Email address</label>
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-                      </div>
-                      <div class="form-group mb-2">
-                        <label for="inputPassword">Password</label>
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-                      </div>
-                      <div class="form-group mb-2">
-                        <label for="inputPasswordRepeat">Repeat Password</label>
-                        <input type="password" id="inputPasswordRepeat" class="form-control" placeholder="Password Repeat" required="">
-                      </div>
-                      <div class="form-group mb-2">
-                        <label for="inputName">Name</label>
-                        <input type="text" id="inputName" class="form-control" placeholder="Name" required="" autofocus="">
-                      </div>
-                      <div class="form-group mb-2">
-                        <label for="inputSurname">Surname</label>
-                        <input type="text" id="inputSurname" class="form-control" placeholder="Surname" required="" autofocus="">
-                      </div>
-                      <div class="form-group mb-2">
-                        <label for="inputNickname">Nickname</label>
-                        <input type="text" id="inputNickname" class="form-control" placeholder="Nickname" required="" autofocus="">
-                      </div>
-                      <div class="flex-inline text-center mb-3">
-                        <span>Are you already a member? Please, </span>
-                        <a href="/public/login.html">Sign in</a>
-                      </div>
-                      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-                    </form>
+                  <div class="form-signin d-flex flex-column text-left">
+                    <img class="mb-4" src="https://ciberseg.uah.es/master/images/logo_grande.png" alt="" width="auto" height="150">
+                    <h1 class="h3 mb-3 font-weight-normal text-center">Welcome <span id="profileName">Fernando</span>!</h1>
+                    <div class="form-group mb-2">
+                      <label for="email">Email</label>
+                      <span id="email" class="form-control">ferlopezcarr@gmail.com</span>
+                    </div>
+                    <div class="form-group mb-2">
+                      <label for="name">Name</label>
+                      <span id="name" class="form-control">Fernando</span>
+                    </div>
+                    <div class="form-group mb-2">
+                      <label for="surname">Surname</label>
+                      <span id="surname" class="form-control">Lopez</span>
+                    </div>
+                    <div class="form-group mb-2">
+                      <label for="nickname">Nickname</label>
+                      <span id="nickname" class="form-control">ferlopezcarr</span>
+                    </div>
+
+                  </div>
 
                 </div>
             </div>
