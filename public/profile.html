@@ -12,6 +12,13 @@
     <title>PEF - DDSS</title>
   </head>
   <body>
+    <style>
+      .form-control {
+        border: none;
+        background-color: #E5E5E5;
+        text-decoration: underline;
+      }
+    </style>
     <div class="d-md-flex h-md-100 align-items-center">
     
         <!-- First Half -->
@@ -19,30 +26,27 @@
             <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
                 <div class="logoarea pt-0 pb-5">
 
-                  <form class="form-signin">
+                  <div class="form-signin d-flex flex-column text-left">
                     <img class="mb-4" src="https://ciberseg.uah.es/master/images/logo_grande.png" alt="" width="auto" height="150">
-                    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                    <h1 class="h3 mb-3 font-weight-normal text-center">Welcome <span id="profileName">Fernando</span>!</h1>
                     <div class="form-group mb-2">
-                      <label for="inputLogin" class="sr-only">Email or nickname</label>
-                      <input type="text" id="inputLogin" class="form-control mb-2" placeholder="Enter your email or nickname" required="" autofocus="">
-                      <div class="invalid-feedback" th:text="${inputLoginError}"></div>
+                      <label for="email">Email</label>
+                      <span id="email" class="form-control">ferlopezcarr@gmail.com</span>
                     </div>
                     <div class="form-group mb-2">
-                      <label for="inputPassword" class="sr-only">Password</label>
-                      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-                      <div class="invalid-feedback" th:text="${passwordError}"></div>
+                      <label for="name">Name</label>
+                      <span id="name" class="form-control">Fernando</span>
                     </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                      </label>
+                    <div class="form-group mb-2">
+                      <label for="surname">Surname</label>
+                      <span id="surname" class="form-control">Lopez</span>
                     </div>
-                    <div class="flex-inline mb-3">
-                      <span>Are you not a member?</span>
-                      <a href="/public/register.html">Sign up</a>
+                    <div class="form-group mb-2">
+                      <label for="nickname">Nickname</label>
+                      <span id="nickname" class="form-control">ferlopezcarr</span>
                     </div>
-                    <button id="btnLogin" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                  </form>
+
+                  </div>
 
                 </div>
             </div>
@@ -83,6 +87,6 @@
     <script src="/public/js/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="/public/js/login.js"></script>
+    <script src="/public/js/index.js"></script>
   </body>
 </html>
