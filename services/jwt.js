@@ -6,6 +6,7 @@ const vault = require('./../provider/vault');
 exports.createToken = function(user){
   vault.read('secret/tokenJWT').then(
     (res) => {
+      let secret = res.data.secret;
       console.log("result:",res.data);
       const payload = {
         id: user._id,
@@ -18,6 +19,6 @@ exports.createToken = function(user){
         initTime: moment().unix(),
         expireTime: moment().add(30, 'days').unix()
       };
-      return jwt.encode(payload, vault.read('secret/tokenJWT'));
+      return jwt.encode(payload, secret);
     });  
 };
