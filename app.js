@@ -2,11 +2,11 @@
 const https = require("https"),
 fs = require("fs");
 
-const options = {
+/*const options = {
   key: fs.readFileSync("/etc/letsencrypt/live/www.app.losuratech.com/privkey.pem", 'utf8'),
   cert: fs.readFileSync("/etc/letsencrypt/live/www.app.losuratech.com/cert.pem"),
   ca: fs.readFileSync('/etc/letsencrypt/live/www.app.losuratech.com/chain.pem', 'utf8')
-};
+};*/
 
 var express = require("express"),
 app = express(),
@@ -36,9 +36,9 @@ var user_routes = require('./routes/user');
 app.use('/authentication', user_routes);
 
 //Start node server
-https.createServer(options, app).listen(443, function() {
+/*https.createServer(options, app).listen(443, function() {
   console.log("Node server running on https://localhost:443");
-});
-/*app.listen(80, function() {
-  console.log("Node server running on http://localhost:80");
 });*/
+app.listen(80, function() {
+  console.log("Node server running on http://localhost:80");
+});
