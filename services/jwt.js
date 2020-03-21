@@ -1,13 +1,11 @@
 const jwt = require('jwt-simple');
 const moment = require('moment');
 const vault = require('./../provider/vault');
-//'4+Md#67%q4J{5.J4:Gb5pHuyK';
 
-exports.createToken = function(user){
-  vault.read('secret/tokenJWT').then(
+const createToken = (user) => {
+  return vault.read('secret/tokenJWT').then(
     (res) => {
       let secret = res.data.secret;
-      console.log("result:",res.data);
       const payload = {
         id: user._id,
         name: user.name,
@@ -20,5 +18,7 @@ exports.createToken = function(user){
         expireTime: moment().add(30, 'days').unix()
       };
       return jwt.encode(payload, secret);
-    });  
+    });
 };
+
+module.exports = createToken;
