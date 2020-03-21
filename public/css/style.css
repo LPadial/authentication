@@ -1,11 +1,17 @@
 /* STYLE CSS */
     body {
-        background-color: #e5e5e5;
+      background-color: #e5e5e5;
     }    
 
     .form-signin {
-        color: rgb(51,51,51);
+      color: rgb(51,51,51);
     }  
+
+    .inputConsole {
+      border: none;
+      color:white !important;
+      background-color: rgb(51,51,51);
+    }
 
     /* CONSOLE CSS */
     hr{ 
@@ -95,4 +101,13 @@
       font-family: verdana;
       margin-left: 20px;
       margin-top: 10px;
+    }
+
+    pre,code {
+      max-height: 1000px;
+    }
+
+    .current-line-debug {
+      color: black;
+      background-color: #D0E7FF;
     }

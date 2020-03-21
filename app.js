@@ -26,11 +26,10 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 //Resources
-app.use(express.static(__dirname + '/public', { dotfiles: 'allow'})); //Serves resources from public folder
+app.use('/public', express.static(__dirname + '/public', { dotfiles: 'allow'})); //Serves resources from public folder
 
 // User routes
 var user_routes = require('./routes/user');
-
 
 //You can access to the routes with this links
 app.use('/authentication', user_routes);
