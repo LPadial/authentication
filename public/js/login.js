@@ -1,4 +1,7 @@
 "use strict"
+
+var parser;
+
 $(function() {
 
     /* Login form */
@@ -23,12 +26,33 @@ $(function() {
     $("#btnLogin").click(function(event) {
     	event.preventDefault();
     	
-    	let email = $("#inputLogin").val();
-		let password = $("#password").val();
+    	let login = $("#inputLogin").val();
+		let password = $("#inputPassword").val();
 		
-    	if(email !== "" && password !== "") {
-            //DO AJAX LOGIN
-        }
+    	if(login !== "" && password !== "") {
+			//DO AJAX LOGIN
+			$.ajax({
+				type: "POST",
+				url: "http://localhost/authentication/user/login",
+				timeout: 0,
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded"
+				},
+				data: {
+					"email": login,
+					"nickname": login,
+					"password": password,
+					"gethash": true
+				},
+				error: function(response) {
+					let responseObj = JSON.parse(response.responseText);
+					parser.displayMessageError("#inputLogin", responseObj.message);
+				},
+				success: function (response) {
+					console.log(response.token + " success");
+				}
+			});
+		}
 
         return false;
     });
