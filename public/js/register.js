@@ -85,20 +85,20 @@ $(function() {
     }
 
     function handleSurname() {
-        correctRegisterForm[3] = parser.parse('#inputSurname', parser.parseName);
+        correctRegisterForm[4] = parser.parse('#inputSurname', parser.parseName);
     }
     $('#inputSurname').donetyping(handleSurname);
     $('#inputSurname').change(handleSurname);
-    if($('#inputNainputSurnamemePerson').val()) {
+    if($('#inputSurname').val()) {
         handleSurname();
     }
     
     function handleNickname() {
-        correctRegisterForm[3] = parser.parse('#inputNickname', parser.parseName);
+        correctRegisterForm[5] = parser.parse('#inputNickname', parser.parseName);
     }
     $('#inputNickname').donetyping(handleNickname);
     $('#inputNickname').change(handleNickname);
-    if($('#inputNainputSurnamemePerson').val()) {
+    if($('#inputNickname').val()) {
         handleNickname();
     }
 
@@ -117,7 +117,26 @@ $(function() {
         }
 
         if(allCorrect) {
-            //DO AJAX REGISTER
+            $.ajax("https://www.app.losuratech.com/authentication/user",{
+                type: 'POST',
+                data: {
+                    email: $('#inputEmail').val(), 
+                    password: $('#inputPassword').val(), 
+                    name: $('#inputName').val(), 
+                    surname: $('#inputSurname').val(), 
+                    nickname: $('#inputNickname').val()
+                }
+            })
+            .done(function(data) {
+                alert(data);
+            })
+            .fail(function(){
+                alert("Error");
+            })
+            .always(function(){
+                alert("complete");
+                location.href = '/public/login.html';
+            });
         }
         
         return false;
