@@ -31,7 +31,7 @@ $(function() {
                 data: {email: email, password: password, gethash: true}
             })
             .done(function(data) {
-                alert(data);
+                alert(data.token);
                 //TODO - Almacenar token devuelto
                 location.href = "/public/profile.html";
             })

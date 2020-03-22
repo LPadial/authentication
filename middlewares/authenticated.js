@@ -9,30 +9,28 @@ exports.ensureAuth = function(req, res, next){
   }
 
   return vault.read('secret/tokenJWT')
-    .then((res) => {
-      let secret = res.data.secret;
+    .then((sec) => {
+      let secret = sec.data.secret;
       let token = req.headers.authorization.replace(/['"]+/g, '');
-      return jwt.decode(token,secret);
-    }).then((payload) => {
+      let payload = jwt.decode(token,secret);
+
       console.log("payload: " + payload);
-      if(payload.expireTime <= moment().unix()){
+      try{
+        if(payload.expireTime <= moment().unix()){
           console.log('Token ha expirado');
           return res.status(401).send({message: 'Token ha expirado'});
-      }else{
-	return payload;
+        }
+      }catch(ex){
+        console.log("Error: " + ex);
+        console.log('Token no válido');
+        return res.status(404).send({message: 'Token no válido'});
       }
-    }).catch((ex) => {
-      console.log("Error: " + ex);
+      req.user = payload;
+      next();
+   }).catch((err) => {
+      console.log("Error: " + err);
       console.log('Token no válido');
       return res.status(404).send({message: 'Token no válido'});
-    }).then((p) => {
-	console.log("payload: " + p.expireTime);
-	req.user = p;
-	next();
-    }).catch((err) => {
-	console.log("Error: " + err);
-	next();
-    });
-
-    next();
+   });
+   
 };
