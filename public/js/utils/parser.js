@@ -7,7 +7,7 @@ $(function() {
 		legalAge: 18,
 		nameLength: 4,
 		emailPattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-		namePattern: /^[\w\s]+$/,
+		namePattern: /^[A-Za-z\u00C0-\u00FF\s]+$/,
 		passwordPattern: /^(?=.{6,})(?=.*\d)(?=.*[A-Z]).*$/,
 		
 	    parseNotNullText : "Por favor, rellena el campo",

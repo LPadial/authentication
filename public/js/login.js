@@ -1,4 +1,7 @@
 "use strict"
+
+var parser;
+
 $(function() {
     /* Login form */
     
@@ -22,13 +25,13 @@ $(function() {
     $("#btnLogin").click(function(event) {
     	event.preventDefault();
     	
-    	let email = $("#inputLogin").val();
+    	let login = $("#inputLogin").val();
 		let password = $("#inputPassword").val();
 		
-    	if(email !== "" && password !== "") {
+    	if(login !== "" && password !== "") {
             $.ajax("https://www.app.losuratech.com/authentication/user/login",{
                 type: 'POST',
-                data: {email: email, password: password, gethash: true}
+                data: {email: login, nickname:login, password: password, gethash: true}
             })
             .done(function(data) {
                 let email = "";
