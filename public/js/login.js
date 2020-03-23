@@ -3,7 +3,6 @@
 var parser;
 
 $(function() {
-
     /* Login form */
     
     $('#inputLogin').keyup(function(event) {
@@ -14,7 +13,7 @@ $(function() {
 		}
 	});
     
-    $('#password').keyup(function(event) {
+    $('#inputPassword').keyup(function(event) {
     	//Enter key
 		if (event.keyCode === 13 && $('#inputLogin').val() !== "") {
 			event.preventDefault();
@@ -30,29 +29,22 @@ $(function() {
 		let password = $("#inputPassword").val();
 		
     	if(login !== "" && password !== "") {
-			//DO AJAX LOGIN
-			$.ajax({
-				type: "POST",
-				url: "http://localhost/authentication/user/login",
-				timeout: 0,
-				headers: {
-					"Content-Type": "application/x-www-form-urlencoded"
-				},
-				data: {
-					"email": login,
-					"nickname": login,
-					"password": password,
-					"gethash": true
-				},
-				error: function(response) {
-					let responseObj = JSON.parse(response.responseText);
-					parser.displayMessageError("#inputLogin", responseObj.message);
-				},
-				success: function (response) {
-					console.log(response.token + " success");
-				}
-			});
-		}
+            $.ajax("https://www.app.losuratech.com/authentication/user/login",{
+                type: 'POST',
+                data: {email: login, nickname:login, password: password, gethash: true}
+            })
+            .done(function(data) {
+                alert(data);
+                //TODO - Almacenar token devuelto
+                location.href = "/public/profile.html";
+            })
+            .fail(function(e){
+                alert("Error");
+            })
+            .always(function(c){
+                alert("complete");
+            });
+        }
 
         return false;
     });
