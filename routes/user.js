@@ -13,11 +13,11 @@ name:Laura
 surname:Padial
 nickname:lpadial*/
 api.route('/users')
-	.get(userController.findAllUsers)
+	.get([md_checkLogin.ensureAuth, md_checkrole.checkAdminrole],userController.findAllUsers)
 	.post(userController.addUser);
 
 api.route('/users/:id')
-	.get(userController.findById)
+	.get(md_checkLogin.ensureAuth, userController.findById)
 	.put(md_checkLogin.ensureAuth, userController.updateUser);
 
 /*Para obtener el token realizar un Post con:
@@ -33,7 +33,7 @@ api.route('/user/login')
 /*Para buscar un usuario por id realizar un get con su id como parametro
 */
 api.route('/user/:id')
-	.get(userController.findById)
+	.get(md_checkLogin.ensureAuth, userController.findById)
 	.delete([md_checkLogin.ensureAuth, md_checkrole.checkAdminrole], userController.deleteUser);
 
 /*Para añadir un usuario realizar post con los siguientes campos:
