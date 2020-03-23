@@ -85,7 +85,7 @@ $(function() {
     }
 
     function handleSurname() {
-        correctRegisterForm[3] = parser.parse('#inputSurname', parser.parseName);
+        correctRegisterForm[4] = parser.parse('#inputSurname', parser.parseName);
     }
     $('#inputSurname').donetyping(handleSurname);
     $('#inputSurname').change(handleSurname);
@@ -94,7 +94,7 @@ $(function() {
     }
     
     function handleNickname() {
-        correctRegisterForm[3] = parser.parse('#inputNickname', parser.parseName);
+        correctRegisterForm[5] = parser.parse('#inputNickname', parser.parseName);
     }
     $('#inputNickname').donetyping(handleNickname);
     $('#inputNickname').change(handleNickname);
@@ -118,6 +118,28 @@ $(function() {
 
         if(allCorrect) {
             //DO AJAX REGISTER
+            $.ajax({
+				type: "POST",
+				url: "http://localhost/authentication/user",
+				timeout: 0,
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded"
+				},
+				data: {
+					"email": $('#inputEmail').val(),
+                    "password": $('#inputPassword').val(),
+                    "name": $('#inputName').val(),
+                    "surname": $('#inputSurname').val(),
+                    "nickname": $('#inputNickname').val()
+				},
+				error: function(response) {
+					let responseObj = JSON.parse(response.responseText);
+					parser.displayMessageError("#inputLogin", responseObj.message);
+				},
+				success: function (response) {
+					console.log(response.token + " success");
+				}
+			});
         }
         
         return false;
