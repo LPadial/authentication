@@ -31,7 +31,12 @@ $(function() {
                 data: {email: email, password: password, gethash: true}
             })
             .done(function(data) {
+                let email = "";
+                let password = "";
+                $("#inputLogin").val("");
+                $("#inputPassword").val("");
                 alert(data.token);
+                localStorage.setItem('token', data.token);
                 //TODO - Almacenar token devuelto
                 location.href = "/public/profile.html";
             })

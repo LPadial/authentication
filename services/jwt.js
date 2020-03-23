@@ -15,7 +15,7 @@ const createToken = (user) => {
         nickname: user.nickname,
         role: user.role,
         initTime: moment().unix(),
-        expireTime: moment().add(30, 'days').unix()
+        expireTime: moment().add(1, 'hours').unix()
       };
       return jwt.encode(payload, secret);
     });
