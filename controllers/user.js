@@ -102,13 +102,12 @@ exports.loginUser = function(req, res) {
 				bcrypt.compare(password, user.password, function(err,check){
 					if(check){
 						if(req.body.gethash == 'true'){
-							console.log('Entra en gethash')
-							let userSend = new Array();
-							userSend.add(user._id, user.email, user.name, user.surname,user.nickname, user.rol)
 							//Devolver un token de jwt
-							res.status(200).send({
-								token: createToken(user),
-								user: {user._id, user.email,user.name, user.surname,user.nickname, user.rol}
+							let token = createToken(user).then((tkn)=>{ 
+								res.status(200).send({
+									token: tkn,
+									user: [user._id, user.email,user.name, user.surname,user.nickname, user.role]
+								});
 							});
 						}else{
 							console.log('Envio user')
