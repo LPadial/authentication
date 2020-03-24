@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 var User  = require('../models/user');
 var bcrypt = require('bcryptjs');
-var jwt = require('../services/jwt');
+var createToken = require('../services/jwt');
 
 //POST - Insert a new user in the DB
 exports.addUser = function(req, res) {
@@ -103,9 +103,11 @@ exports.loginUser = function(req, res) {
 					if(check){
 						if(req.body.gethash == 'true'){
 							console.log('Entra en gethash')
+							let userSend = new Array();
+							userSend.add(user._id, user.email, user.name, user.surname,user.nickname, user.rol)
 							//Devolver un token de jwt
 							res.status(200).send({
-								token: jwt.createToken(user),
+								token: createToken(user),
 								user: {user._id, user.email,user.name, user.surname,user.nickname, user.rol}
 							});
 						}else{
