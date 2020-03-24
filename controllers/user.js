@@ -60,7 +60,7 @@ exports.deleteUser = function(req, res) {
 
 //GET - Return all users in the DB
 exports.findAllUsers = function(req, res) {
-	User.find(function(err, users) {
+	User.find({}, '_id email name surname nickname role', function(err, users) {
 		if(err) res.send(500, err.message);
 
 		console.log('GET /users')
@@ -70,7 +70,7 @@ exports.findAllUsers = function(req, res) {
 
 //GET - Return a user with specified ID
 exports.findById = function(req, res) {
-	User.findById(req.params.id, function(err, user) {
+	User.findById(req.params.id, '_id email name surname nickname role', function(err, user) {
 		if(err) return res.send(500, err.message);
 
 		console.log('GET /user/' + req.params.id);
