@@ -5,6 +5,8 @@ var api = express.Router();
 var md_checkLogin = require('../middlewares/authenticated');
 var md_checkrole = require('../middlewares/permissions');
 
+//--------------------- USER AUTHENTICATED ---------------------
+
 /*Para obtener todos los usuarios realizar get,
 para añadir un usuario realizar post con los siguientes campos:
 email:lpadial@ddss.com
@@ -35,6 +37,11 @@ api.route('/user/login')
 api.route('/user/:id')
 	.get(md_checkLogin.ensureAuth, userController.findById)
 	.delete([md_checkLogin.ensureAuth, md_checkrole.checkAdminrole], userController.deleteUser);
+
+
+
+
+//--------------------- USER NOT AUTHENTICATED ---------------------
 
 /*Para añadir un usuario realizar post con los siguientes campos:
 email:lpadial@ddss.com

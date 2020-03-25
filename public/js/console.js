@@ -23,15 +23,6 @@ $(function() {
         return false;
     });
 
-    
-
-    //surname:Padial
-    /*
-    file_content_copy = file_content.replace("surname:Padial", "</code><span class='current-line-debug'>"+"surname:Padial"+"</span><code>");
-            $("#console_code").replaceWith("<code class='#console_code'>"+file_content_copy);
-    */
-
-
 });
 
 function debug_console(line) {

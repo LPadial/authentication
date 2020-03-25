@@ -2,6 +2,8 @@ var jwt = require('jwt-simple');
 var moment = require('moment');
 var vault = require('../provider/vault');
 
+// --------------------- MIDDLEWARE USED TO CHECK AUTHENTICATED USERS ---------------------
+
 exports.ensureAuth = function(req, res, next){
   if(!req.headers.authorization){
     console.log('No hay cabecera de autenticación');

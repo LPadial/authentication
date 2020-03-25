@@ -1,6 +1,8 @@
  var mongoose = require('mongoose'),
   Schema   = mongoose.Schema;
 
+// --------------------- USER MODEL SCHEMA ---------------------
+
   var userSchema = new Schema({
     name: {
       type: String,

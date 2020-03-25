@@ -117,6 +117,10 @@ $(function() {
         }
 
         if(allCorrect) {
+
+            let login = ($('#inputEmail').val() !== "" ? $('#inputEmail').val() : $('#inputNickname').val());
+            let password = $('#inputPassword').val();
+
             $.ajax("https://www.app.losuratech.com/authentication/user",{
                 type: 'POST',
                 data: {
@@ -127,19 +131,23 @@ $(function() {
                     nickname: $('#inputNickname').val()
                 }
             })
-            .done(function(data) {
-                alert(data);
+            .done(function() {
+                doLogin(login, password);
+
+                login = "";
+                password = "";
+                $('#inputEmail').val("");
+                $('#inputNickname').val("");
+                $('#inputPassword').val("");
             })
-            .fail(function(){
-                alert("Error");
-            })
-            .always(function(){
-                alert("complete");
-                location.href = '/public/login.html';
-            });
+            .fail(onRegisterFail);
         }
         
         return false;
     });
+
+    function onRegisterFail(error) {
+        parser.displayMessageError("#inputLogin", error);
+    }
 
 });

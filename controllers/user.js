@@ -4,6 +4,8 @@ var User  = require('../models/user');
 var bcrypt = require('bcryptjs');
 var createToken = require('../services/jwt');
 
+// --------------------- USER CONTROLLER FUNCTIONS ---------------------
+
 //POST - Insert a new user in the DB
 exports.addUser = function(req, res) {
 	var user = new User({
@@ -22,7 +24,7 @@ exports.addUser = function(req, res) {
 			user.password = hash;
 			user.save(function(err) {
 				if(err) return res.status(500).send(err.message);
-				res.status(200).jsonp(user);
+				res.status(200).send(true);
 			});
 		});
 	}

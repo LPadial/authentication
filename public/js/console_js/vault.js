@@ -1,5 +1,6 @@
 const rootKey = process.env.rootKey; // Key to open vault
 
+// --------------------- VAULT CONFIGURATION ---------------------
 
 var options = {
   apiVersion: 'v1',

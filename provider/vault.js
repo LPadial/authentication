@@ -1,5 +1,6 @@
 const rootKey = "s.SWaTzVmKB39NnRYbDPy6u18H";
 
+// --------------------- VAULT CONFIGURATION ---------------------
 
 var options = {
   apiVersion: 'v1',

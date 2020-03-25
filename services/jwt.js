@@ -2,6 +2,8 @@ const jwt = require('jwt-simple');
 const moment = require('moment');
 const vault = require('./../provider/vault');
 
+// --------------------- LOGIN CREATE TOKEN ---------------------
+
 const createToken = (user) => {
   return vault.read('secret/tokenJWT').then(
     (res) => {
