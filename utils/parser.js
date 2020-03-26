@@ -6,7 +6,7 @@ let passwordPattern= /^(?=.{6,})(?=.*\d)(?=.*[A-Z]).*$/;
 
 let parseNotNullText = "Por favor, rellena el campo";
 let parseEmailText = "Por favor, introduce un email válido";
-let parseNameText = "Por favor, introduce solo letras y/o números, y al menos 4 caracteres";
+let parseNameText = "Por favor, introduce solo letras y al menos 4 caracteres";
 let parsePasswordText = "La contraseña debe contener al menos"+" 1 mayúscula"+ ", 1 número"+" y 6 caracteres";
 
 function parseNotNull(argument) {
