@@ -62,6 +62,8 @@ function onLoginSucced(data) {
     
     console.log(data.token);
     console.log(data.user);
+    console.log(data.url);
+    let view = url + " div#container-page";
 
     localStorage.setItem('token', data.token);
     //TODO - Almacenar token devuelto
@@ -73,7 +75,7 @@ function onLoginSucced(data) {
 
     //TO DO: No ir cambiando los roles para probar
     if(role === "user") {
-        $("#container-page").load('http://localhost:80/public/profile_section.html div#container-page', function() {
+        $("#container-page").load(view, function() {
             //Poner el perfil dinamicamente    
             $("#profileName").text(data.user[4]);
             $("#email").text(data.user[1]);
@@ -83,9 +85,9 @@ function onLoginSucced(data) {
         });
     }
     else if(role === "admin") {
-        $("#container-page").load('http://localhost:80/public/admin.html div#container-page', function() {
+        $("#container-page").load(view, function() {
             
-            $.ajax("http://localhost:80/authentication/users",{
+            $.ajax("https://www.app.losuratech.com/authentication/users",{
                 type: 'GET',
                 data: {token: ""}
             })
