@@ -33,6 +33,7 @@ api.route('/user/login')
 	.post(userController.loginUser);
 
 /*Para buscar un usuario por id realizar un get con su id como parametro
+ *Para eliminar un usuario por id realizar un delete con su id como parametro
 */
 api.route('/user/:id')
 	.get(md_checkLogin.ensureAuth, userController.findById)
