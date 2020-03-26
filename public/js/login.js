@@ -63,7 +63,7 @@ function onLoginSucced(data) {
     console.log(data.token);
     console.log(data.user);
     console.log(data.url);
-    let view = url + " div#container-page";
+    let view = data.url + " div#container-page";
 
     localStorage.setItem('token', data.token);
     //TODO - Almacenar token devuelto
