@@ -57,27 +57,29 @@ $(function() {
 
     //Delete user form
     $("#deleteUserForm").submit(function() {
-
+        e.preventDefault();
+        
         if(handleEmail().ok) {
-            let user_id = $("#deleteUserForm").prop("user_id");
-            let user_email = $("#deleteUserForm").prop("user_email");
+            let user_id = $("#deleteUserForm").prop("data-user-id");
+            let user_email = $("#deleteUserForm").prop("data-user-email");
 
             if($('#inputEmail').val() !== user_email) {
                 displayMessageError('#inputEmail', "El email introducido debe coincidir con el del usuario a dar de baja");
             }
             else {
                 user_email = "";
-                $("#deleteUserForm").prop("user_email", "");
+                $("#deleteUserForm").prop("data-user-email", "");
 
                 $.ajax("https://www.app.losuratech.com/authentication/user/"+user_id,{
                     type: 'DELETE',
+                    headers: { Authorization: localStorage.getItem("token") },
                     data: {id: user_id}
                 })
                 .done(function(data) {
                     $("#tr_u_"+user_id).remove();
 
                     user_id = "";
-                    $("#deleteUserForm").prop("user_id", "");
+                    $("#deleteUserForm").prop("data-user-id", "");
                 })
                 .fail(onDeleteFail);
             }
@@ -107,19 +109,20 @@ function loadUserTable(users) {
         $(tr_u).find(".td_nickname").text(u.nickname);
 
         let btnDelete = $(tr_u).find(".td_actions > .btn_delete");
-        $(btnDelete).prop("user_id", u._id);
-        $(btnDelete).prop("user_email", u.email);
+        $(btnDelete).attr("data-user-id", u._id);
+        $(btnDelete).attr("data-user-email", u.email);
 
         $(btnDelete).click(function(e) {
             e.preventDefault();
-
-            let id = $(this).prop("user_id");
-            let email = $(this).prop("user_email");
-
-            $("#deleteUserForm").prop("user_id", id);
-            $("#deleteUserForm").prop("user_email", email);
             
-            
+
+            let id = $(this).prop("data-user-id");
+            let email = $(this).prop("data-user-email");
+
+            $("#deleteUserForm").prop("data-user-id", id);
+            $("#deleteUserForm").prop("data-user-email", email);
+
+            $('#deleteUserModal').modal('show');            
 
             return false;
         });
