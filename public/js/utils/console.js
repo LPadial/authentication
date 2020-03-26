@@ -26,7 +26,7 @@ $(function() {
 
     var loaded = false;
 
-    $("#inputConsole").change(function(e) {
+    $("#inputConsole").dblclick(function(e) {
         e.preventDefault();
 
         let command = $("#inputConsole").val().trim();

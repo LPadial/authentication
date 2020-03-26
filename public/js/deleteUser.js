@@ -58,7 +58,7 @@ $(function() {
     //Delete user form
     $("#deleteUserForm").submit(function(e) {
         e.preventDefault();
-        
+        alert("Hola");
         if(handleEmail().ok) {
             let user_id = $("#deleteUserForm").prop("data-user-id");
             let user_email = $("#deleteUserForm").prop("data-user-email");
@@ -124,7 +124,6 @@ function loadUserTable(users) {
 
             $('#deleteUserModal').modal('show');            
 
-            return false;
         });
 
         $(tr_u).removeClass("d-none");

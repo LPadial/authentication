@@ -39,11 +39,11 @@
               <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
               <div class="invalid-feedback" th:text="${emailError}"></div>
             </div>
+            <div class="modal-footer d-flex justify-content-center">
+              <button id="deleteYes" type="submit" class="btn btn-lg btn-danger mr-2">Yes</button>
+              <button type="button" class="btn btn-lg btn-secondary ml-2" data-dismiss="modal">No</button>
+            </div>
           </form>
-        </div>
-        <div class="modal-footer d-flex justify-content-center">
-          <button type="button" class="btn btn-lg btn-danger mr-2">Yes</button>
-          <button type="button" class="btn btn-lg btn-secondary ml-2" data-dismiss="modal">No</button>
         </div>
       </div>
     </div>
