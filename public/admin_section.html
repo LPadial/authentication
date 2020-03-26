@@ -50,21 +50,22 @@
   </div>
 
   <!-- Clone objects -->
-  <div>
-    <tr id="tr_user_clone" class="d-none">
-      <th scope="row">1</th>
-      <td class="td_email">ferlopezcarr@gmail.com</td>
-      <td class="td_name">Fernando</td>
-      <td class="td_surname">Lopez</td>
-      <td class="td_nickname">ferlopezcarr</td>
-      <td class="td_actions">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-danger btn_delete" data-toggle="modal" data-target="#deleteUserModal">Delete account</button>
-      </td>
-    </tr>
+  <div class="d-none">
+    <table>
+      <tbody id="tbody_users">
+        <tr id="tr_user_clone">
+          <th scope="row" class="td_row"></th>
+          <td class="td_email"></td>
+          <td class="td_name"></td>
+          <td class="td_surname"></td>
+          <td class="td_nickname"></td>
+          <td class="td_actions">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger btn_delete" data-toggle="modal" data-target="#deleteUserModal">Delete account</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
-  <!-- Scripts -->
-  <script src="/public/js/deleteUser.js"></script>
 
 </div>
