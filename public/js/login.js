@@ -37,7 +37,7 @@ $(function() {
 
 function doLogin(login, password) {
     if(login !== "" && password !== "") {
-        $.ajax("https://www.app.losuratech.com/authentication/user/login",{
+        $.ajax("http://localhost:80/authentication/user/login",{
             type: 'POST',
             data: {email: login, nickname:login, password: password, gethash: true}
         })
@@ -60,12 +60,50 @@ function doLogin(login, password) {
 function onLoginSucced(data) {
     
     console.log(data.token);
-    console.log(data.users);
+    console.log(data.user);
+
+    localStorage.setItem('token', data.token);
+    //TODO - Almacenar token devuelto
+    
 
     //Cargar profile con ajax
-    //Poner el perfil dinamicamente
+    //location.href = "/public/profile.html";
+    let role = data.user[5];
+    if(role === "user") {
+        $("#container-page").load('http://localhost:80/public/profile_info.html div#container-page', function() {
+            //Poner el perfil dinamicamente    
+            $("#profileName").text(data.user[4]);
+            $("#email").text(data.user[1]);
+            $("#name").text(data.user[2]);
+            $("#surname").text(data.user[3]);
+            $("#nickname").text(data.user[4]);
+        });
+    }
+    else if(role === "admin") {
+        $("#container-page").load('http://localhost:80/public/admin.html div#container-page', function() {
+            /*
+            $.ajax("http://localhost:80/authentication/users",{
+                type: 'GET',
+                data: {email: login, nickname:login, password: password, gethash: true}
+            })
+            .done(function(data) {
+                
+
+
+                onLoginSucced(data);
+            })
+            .fail(function(error) { console.log(error); } );
+            */
+        });
+
+        
+    }
+    //$("#container-page").html(data);
+
+    
+    
 }
 
 function onLoginFail(error) {
-    parser.displayMessageError("#inputLogin", error);
+    parser.displayMessageError("#inputLogin", error.message);
 }

@@ -17,47 +17,47 @@
         <!-- First Half -->
         <div class="col-md-6 p-0 bg-indigo h-md-100">
             <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
-                <div class="logoarea pt-0 pb-5">
+                <div id="container-page" class="logoarea pt-0 pb-5">
 
-                    <form id="register" class="form-signin d-flex flex-column text-left">
-                      <img class="mb-4" src="https://ciberseg.uah.es/master/images/logo_grande.png" alt="" width="auto" height="150">
-                      <h1 class="h3 mb-3 font-weight-normal text-center">Register</h1>
-                      <div class="form-group mb-2">
-                        <label for="inputEmail">Email address</label>
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-                        <div class="invalid-feedback" th:text="${emailError}"></div>
-                      </div>
-                      <div class="form-group mb-2">
-                        <label for="inputPassword">Password</label>
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-                        <div class="invalid-feedback" th:text="${passwordError}"></div>
-                      </div>
-                      <div class="form-group mb-2">
-                        <label for="inputPasswordRepeat">Repeat Password</label>
-                        <input type="password" id="inputPasswordRepeat" class="form-control" placeholder="Password Repeat" required="">
-                        <div class="invalid-feedback" th:text="${passwordRepeatError}"></div>
-                      </div>
-                      <div class="form-group mb-2">
-                        <label for="inputName">Name</label>
-                        <input type="text" id="inputName" class="form-control" placeholder="Name" required="" autofocus="">
-                        <div class="invalid-feedback" th:text="${nameError}"></div>
-                      </div>
-                      <div class="form-group mb-2">
-                        <label for="inputSurname">Surname</label>
-                        <input type="text" id="inputSurname" class="form-control" placeholder="Surname" required="" autofocus="">
-                        <div class="invalid-feedback" th:text="${surnameError}"></div>
-                      </div>
-                      <div class="form-group mb-2">
-                        <label for="inputNickname">Nickname</label>
-                        <input type="text" id="inputNickname" class="form-control" placeholder="Nickname" required="" autofocus="">
-                        <div class="invalid-feedback" th:text="${nicknameError}"></div>
-                      </div>
-                      <div class="flex-inline text-center mb-3">
-                        <span>Are you already a member? Please, </span>
-                        <a href="/public/login.html">Sign in</a>
-                      </div>
-                      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-                    </form>
+                  <form id="register" class="form-signin d-flex flex-column text-left">
+                    <img class="mb-4" src="https://ciberseg.uah.es/master/images/logo_grande.png" alt="" width="auto" height="150">
+                    <h1 class="h3 mb-3 font-weight-normal text-center">Register</h1>
+                    <div class="form-group mb-2">
+                      <label for="inputEmail">Email address</label>
+                      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                      <div class="invalid-feedback" th:text="${emailError}"></div>
+                    </div>
+                    <div class="form-group mb-2">
+                      <label for="inputPassword">Password</label>
+                      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+                      <div class="invalid-feedback" th:text="${passwordError}"></div>
+                    </div>
+                    <div class="form-group mb-2">
+                      <label for="inputPasswordRepeat">Repeat Password</label>
+                      <input type="password" id="inputPasswordRepeat" class="form-control" placeholder="Password Repeat" required="">
+                      <div class="invalid-feedback" th:text="${passwordRepeatError}"></div>
+                    </div>
+                    <div class="form-group mb-2">
+                      <label for="inputName">Name</label>
+                      <input type="text" id="inputName" class="form-control" placeholder="Name" required="" autofocus="">
+                      <div class="invalid-feedback" th:text="${nameError}"></div>
+                    </div>
+                    <div class="form-group mb-2">
+                      <label for="inputSurname">Surname</label>
+                      <input type="text" id="inputSurname" class="form-control" placeholder="Surname" required="" autofocus="">
+                      <div class="invalid-feedback" th:text="${surnameError}"></div>
+                    </div>
+                    <div class="form-group mb-2">
+                      <label for="inputNickname">Nickname</label>
+                      <input type="text" id="inputNickname" class="form-control" placeholder="Nickname" required="" autofocus="">
+                      <div class="invalid-feedback" th:text="${nicknameError}"></div>
+                    </div>
+                    <div class="flex-inline text-center mb-3">
+                      <span>Are you already a member? Please, </span>
+                      <a href="/public/login.html">Sign in</a>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+                  </form>
 
                 </div>
             </div>

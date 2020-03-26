@@ -121,7 +121,7 @@ $(function() {
             let login = ($('#inputEmail').val() !== "" ? $('#inputEmail').val() : $('#inputNickname').val());
             let password = $('#inputPassword').val();
 
-            $.ajax("https://www.app.losuratech.com/authentication/user",{
+            $.ajax("http://localhost:80/authentication/user",{
                 type: 'POST',
                 data: {
                     email: $('#inputEmail').val(), 
@@ -136,9 +136,8 @@ $(function() {
 
                 login = "";
                 password = "";
-                $('#inputEmail').val("");
-                $('#inputNickname').val("");
                 $('#inputPassword').val("");
+                $('#inputPasswordRepeat').val("");
             })
             .fail(onRegisterFail);
         }
