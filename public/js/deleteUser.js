@@ -109,7 +109,7 @@ function loadUserTable(users) {
         $(btnDelete).prop("user_id", u.id);
         $(btnDelete).prop("user_email", u.email);
 
-        $(btnDelete).click(function() {
+        $(btnDelete).click(function(e) {
             e.preventDefault();
 
             let id = $(this).prop("user_id");
