@@ -26,40 +26,37 @@ $(function() {
 
     var loaded = false;
 
-    $("#inputConsole").keypress(function(e) {
+    $("#inputConsole").change(function(e) {
+        e.preventDefault();
 
-        if(e.which == 13) {
-            e.preventDefault();
+        let command = $("#inputConsole").val().trim();
+        console.log(command);
 
-            let command = $("#inputConsole").val().trim();
-            console.log(command);
-
-            if(command.startsWith("cat ")) {
-                let arg = command.replace("cat ", "");
-                readConsoleFile(arg, function(data) {
-                    //Mostar las lineas que tu quieras
-                });
-            }
-            else if(command.trim().startsWith("next")) {
-                if(loaded && debug_count !== "") {
-                    if(debug_line_array !== null && debug_line_array[fileName].length > 0 && debug_count < debug_line_array[fileName].length) {
-                        debug_console_index(debug_line_array[fileName][debug_count]);
-                        debug_count++;
-                    }
+        if(command.startsWith("cat ")) {
+            let arg = command.replace("cat ", "");
+            readConsoleFile(arg, function(data) {
+                //Mostar las lineas que tu quieras
+            });
+        }
+        else if(command.trim().startsWith("next")) {
+            if(loaded && debug_count !== "") {
+                if(debug_line_array !== null && debug_line_array[fileName].length > 0 && debug_count < debug_line_array[fileName].length) {
+                    debug_console_index(debug_line_array[fileName][debug_count]);
+                    debug_count++;
                 }
             }
-            else if(command.trim().startsWith("stop")) {
-                stopDebug();
-            }
-            else if(command.trim().startsWith("reset")) {
-                resetDebug();
-            }
-            else if(command.trim().startsWith("clear")) {
-                clearDebugLine();
-            }
-            else if(command.trim().startsWith("help")) {
-                help();
-            }
+        }
+        else if(command.trim().startsWith("stop")) {
+            stopDebug();
+        }
+        else if(command.trim().startsWith("reset")) {
+            resetDebug();
+        }
+        else if(command.trim().startsWith("clear")) {
+            clearDebugLine();
+        }
+        else if(command.trim().startsWith("help")) {
+            help();
         }
     });
 
