@@ -105,7 +105,7 @@ exports.loginUser = function(req, res) {
 					if(check){
 						if(req.body.gethash == 'true'){
 							//Devolver un token de jwt
-							let urladmin = "https://www.app.losuratech.com/public/admin.html";
+							let urladmin = "https://www.app.losuratech.com/public/admin_section.html";
 							let url = user.role=="admin"? urladmin :"https://www.app.losuratech.com/public/profile_section.html";
 							
 							let token = createToken(user).then((tkn)=>{ 
