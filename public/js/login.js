@@ -37,7 +37,8 @@ $(function() {
 
 function doLogin(login, password) {
     if(login !== "" && password !== "") {
-        $.ajax("http://localhost:80/authentication/user/login",{
+        $.ajax("https://www.app.losuratech.com/authentication/user/login",{
+        //$.ajax("http://localhost:80/authentication/user/login",{
             type: 'POST',
             data: {email: login, nickname:login, password: password, gethash: true}
         })
@@ -69,8 +70,10 @@ function onLoginSucced(data) {
     //Cargar profile con ajax
     //location.href = "/public/profile.html";
     let role = data.user[5];
+
+    //TO DO: No ir cambiando los roles para probar
     if(role === "user") {
-        $("#container-page").load('http://localhost:80/public/profile_info.html div#container-page', function() {
+        $("#container-page").load('http://localhost:80/public/profile_section.html div#container-page', function() {
             //Poner el perfil dinamicamente    
             $("#profileName").text(data.user[4]);
             $("#email").text(data.user[1]);
@@ -81,27 +84,20 @@ function onLoginSucced(data) {
     }
     else if(role === "admin") {
         $("#container-page").load('http://localhost:80/public/admin.html div#container-page', function() {
-            /*
+            
             $.ajax("http://localhost:80/authentication/users",{
                 type: 'GET',
-                data: {email: login, nickname:login, password: password, gethash: true}
+                data: {token: ""}
             })
             .done(function(data) {
-                
-
-
-                onLoginSucced(data);
+                //deteleUser.js
+                loadUserTable(data.users)
             })
             .fail(function(error) { console.log(error); } );
-            */
         });
-
         
     }
     //$("#container-page").html(data);
-
-    
-    
 }
 
 function onLoginFail(error) {

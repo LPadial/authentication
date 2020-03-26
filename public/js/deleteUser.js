@@ -44,12 +44,10 @@ $(function() {
             });
         }
     });
-    
-    /* Person form */
-    var correctDeleteUserForm = [];
 
+    //Parse email
     function handleEmail() {
-        correctDeleteUserForm = parser.parse('#inputEmail', parser.parseEmail);
+        return parser.parse('#inputEmail', parser.parseEmail);
     }
     $('#inputEmail').donetyping(handleEmail);
     $('#inputEmail').change(handleEmail);
@@ -57,14 +55,76 @@ $(function() {
         handleEmail();
     }
 
-    $("#deleteUser").submit(function() {
-        handleEmail();
+    //Delete user form
+    $("#deleteUserForm").submit(function() {
 
-        if(correctDeleteUserForm) {
-            //DO AJAX REGISTER
+        if(handleEmail().ok) {
+            let user_id = $("#deleteUserForm").prop("user_id");
+            let user_email = $("#deleteUserForm").prop("user_email");
+
+            if($('#inputEmail').val() !== user_email) {
+                displayMessageError('#inputEmail', "El email introducido debe coincidir con el del usuario a dar de baja");
+            }
+            else {
+                user_email = "";
+                $("#deleteUserForm").prop("user_email", "");
+
+                $.ajax("http://localhost:80/authentication/user/"+user_id,{
+                    type: 'DELETE',
+                    data: {id: user_id}
+                })
+                .done(function(data) {
+                    $("#tr_u_"+user_id).remove();
+
+                    user_id = "";
+                    $("#deleteUserForm").prop("user_id", "");
+                })
+                .fail(onDeleteFail);
+            }
         }
         
         return false;
     });
 
+    function onDeleteFail(error) {
+        parser.displayMessageError("#inputEmail", error.message);
+    }
+    
+
 });
+
+function loadUserTable(users) {
+    $("#tbody_users").empty();
+
+    for(let u of users) {
+        let tr_u = $("#tr_user_clone").clone();
+
+        $(tr_u).id("tr_u_"+u.id);
+        $(tr_u).find(".td_email").text(u.email);
+        $(tr_u).find(".td_name").text(u.name);
+        $(tr_u).find(".td_surname").text(u.surname);
+        $(tr_u).find(".td_nickname").text(u.nickname);
+
+        let btnDelete = $(tr_u).find(".td_actions > btn_delete");
+        $(btnDelete).prop("user_id", u.id);
+        $(btnDelete).prop("user_email", u.email);
+
+        $(btnDelete).click(function() {
+            e.preventDefault();
+
+            let id = $(this).prop("user_id");
+            let email = $(this).prop("user_email");
+
+            $("#deleteUserForm").prop("user_id", id);
+            $("#deleteUserForm").prop("user_email", email);
+            
+            
+
+            return false;
+        });
+
+        $(tr_u).removeClass("d-none");
+
+        $("#tbody_users").append(tr_u);
+    }
+}
