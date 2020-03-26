@@ -69,7 +69,7 @@ $(function() {
                 user_email = "";
                 $("#deleteUserForm").prop("user_email", "");
 
-                $.ajax("http://localhost:80/authentication/user/"+user_id,{
+                $.ajax("https://www.app.losuratech.com/authentication/user/"+user_id,{
                     type: 'DELETE',
                     data: {id: user_id}
                 })

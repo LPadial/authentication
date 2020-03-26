@@ -105,10 +105,14 @@ exports.loginUser = function(req, res) {
 					if(check){
 						if(req.body.gethash == 'true'){
 							//Devolver un token de jwt
+							let urladmin = "https://www.app.losuratech.com/public/admin_section.html";
+							let url = user.role=="admin"? urladmin :"https://www.app.losuratech.com/public/profile_section.html";
+							
 							let token = createToken(user).then((tkn)=>{ 
 								res.status(200).send({
 									token: tkn,
-									user: [user._id, user.email,user.name, user.surname,user.nickname, user.role]
+									user: [user._id, user.email,user.name, user.surname,user.nickname, user.role],
+									url: url
 								});
 							});
 						}else{

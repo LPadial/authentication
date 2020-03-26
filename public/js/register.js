@@ -117,11 +117,10 @@ $(function() {
         }
 
         if(allCorrect) {
-
             let login = ($('#inputEmail').val() !== "" ? $('#inputEmail').val() : $('#inputNickname').val());
             let password = $('#inputPassword').val();
 
-            $.ajax("http://localhost:80/authentication/user",{
+            $.ajax("https://www.app.losuratech.com/authentication/user",{
                 type: 'POST',
                 data: {
                     email: $('#inputEmail').val(), 
