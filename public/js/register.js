@@ -117,7 +117,6 @@ $(function() {
         }
 
         if(allCorrect) {
-S
             let login = ($('#inputEmail').val() !== "" ? $('#inputEmail').val() : $('#inputNickname').val());
             let password = $('#inputPassword').val();
 
