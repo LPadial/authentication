@@ -56,7 +56,7 @@ $(function() {
     }
 
     //Delete user form
-    $("#deleteUserForm").submit(function() {
+    $("#deleteUserForm").submit(function(e) {
         e.preventDefault();
         
         if(handleEmail().ok) {
