@@ -96,17 +96,18 @@ $(function() {
 function loadUserTable(users) {
     $("#tbody_users").empty();
 
-    for(let u of users) {
+    for(const [i, u] of users.entries()) {
         let tr_u = $("#tr_user_clone").clone();
 
-        $(tr_u).id("tr_u_"+u.id);
+        $(tr_u).attr('id', "tr_u_"+u._id);
+        $(tr_u).find(".td_row").text(i);
         $(tr_u).find(".td_email").text(u.email);
         $(tr_u).find(".td_name").text(u.name);
         $(tr_u).find(".td_surname").text(u.surname);
         $(tr_u).find(".td_nickname").text(u.nickname);
 
-        let btnDelete = $(tr_u).find(".td_actions > btn_delete");
-        $(btnDelete).prop("user_id", u.id);
+        let btnDelete = $(tr_u).find(".td_actions > .btn_delete");
+        $(btnDelete).prop("user_id", u._id);
         $(btnDelete).prop("user_email", u.email);
 
         $(btnDelete).click(function() {

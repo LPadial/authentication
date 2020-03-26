@@ -89,11 +89,11 @@ function onLoginSucced(data) {
             
             $.ajax("https://www.app.losuratech.com/authentication/users",{
                 type: 'GET',
-                data: {token: ""}
+                headers: { Authorization: data.token }
             })
-            .done(function(data) {
+            .done(function(users) {
                 //deteleUser.js
-                loadUserTable(data.users)
+                loadUserTable(users);
             })
             .fail(function(error) { console.log(error); } );
         });
