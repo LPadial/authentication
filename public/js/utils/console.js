@@ -20,7 +20,10 @@ var debug_line_array = {
     "route_user_get_users.js" : [11],
     "authenticated.js" : [8,13,16,17,21,31],
     "permissions.js" : [6],
-    "controller_user_get_users.js" : [11]
+    "controller_user_get_users.js" : [11],
+    //Delete user
+    "route_user_delete.js" : [15],
+    "controller_user_delete.js" : [11]
 };
 var debug_count = "";
 
