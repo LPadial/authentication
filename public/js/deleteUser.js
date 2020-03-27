@@ -46,24 +46,23 @@ $(function() {
     });
 
     //Delete user form
-    function deleteUser(e) {
-        //e.preventDefault();
-
-        alert("Hola");
+    function deleteUser() {
         
         let emailOk = parser.parse('#inputEmail', parser.parseEmail);
+        console.log(emailOk);
 
-        if(emailOk.ok) {
+        if(emailOk) {
             alert("Email correcto");
-            let user_id = $("#deleteUserForm").prop("data-user-id");
-            let user_email = $("#deleteUserForm").prop("data-user-email");
+            let user_id = $("#deleteUserForm").attr("data-user-id");
+            let user_email = $("#deleteUserForm").attr("data-user-email");
 
             if($('#inputEmail').val() !== user_email) {
-                displayMessageError('#inputEmail', "El email introducido debe coincidir con el del usuario a dar de baja");
+                parser.displayMessageError('#inputEmail', "El email introducido debe coincidir con el del usuario a dar de baja");
             }
             else {
                 user_email = "";
-                $("#deleteUserForm").prop("data-user-email", "");
+                $("#deleteUserForm").attr("data-user-email", "");
+                $('#inputEmail').val("");
 
                 $.ajax("https://www.app.losuratech.com/authentication/user/"+user_id,{
                     type: 'DELETE',
@@ -75,22 +74,30 @@ $(function() {
                     $("#tr_u_"+user_id).remove();
 
                     user_id = "";
-                    $("#deleteUserForm").prop("data-user-id", "");
+                    $("#deleteUserForm").attr("data-user-id", "");
                 })
-                .fail(onDeleteFail);
+                .fail(function() {
+                    parser.displayMessageError("#inputEmail", error.message);
+                });
             }
         }
-        
-        //return false;
     }
 
     //Parse email
-    $('#inputEmail').donetyping(deleteUser);
-    $('#inputEmail').change(deleteUser);
+    $('#inputEmail').donetyping(function() {
+        parser.parse('#inputEmail', parser.parseEmail);
+    });
+    $('#inputEmail').change(function() {
+        parser.parse('#inputEmail', parser.parseEmail)
+    });
 
-    function onDeleteFail(error) {
-        parser.displayMessageError("#inputEmail", error.message);
-    }
+    $("#deleteYes").click(function(e) {
+        e.preventDefault();
+
+        deleteUser();
+
+        return false;
+    });
 
 });
 
@@ -115,11 +122,11 @@ function loadUserTable(users) {
             e.preventDefault();
             
 
-            let id = $(this).prop("data-user-id");
-            let email = $(this).prop("data-user-email");
+            let id = $(this).attr("data-user-id");
+            let email = $(this).attr("data-user-email");
 
-            $("#deleteUserForm").prop("data-user-id", id);
-            $("#deleteUserForm").prop("data-user-email", email);
+            $("#deleteUserForm").attr("data-user-id", id);
+            $("#deleteUserForm").attr("data-user-email", email);
 
             $('#deleteUserModal').modal('show');            
 
