@@ -91,6 +91,10 @@ $(function() {
     function onDeleteFail(error) {
         parser.displayMessageError("#inputEmail", error.message);
     }
+
+    $("#deleteYes").on("click", function(){
+        alert("Hola");
+    }
     
 
 });
