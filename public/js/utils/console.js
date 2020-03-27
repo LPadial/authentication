@@ -7,8 +7,20 @@ var file_content_copy = "";
 
 //Console
 var debug_line_array = {
-    "jwt.js" : [0, 7],
-    "authenticated.js" : [6, 15]
+    //Register
+    "one_time_password.js" : [15,19,30],
+    "route_user_register.js" : [14],
+    "model_user.js" : [6,29],
+    "controller_user_register.js" : [11,17,22,25],
+    //Login
+    "route_user_login.js" : [17],
+    "controller_user_login.js" : [18,26,30,32,37],
+    "jwt.js" : [8,10,11,22],
+    //Get Users
+    "route_user_get_users.js" : [11],
+    "authenticated.js" : [8,13,16,17,21,31],
+    "permissions.js" : [6],
+    "controller_user_get_users.js" : [11]
 };
 var debug_count = "";
 

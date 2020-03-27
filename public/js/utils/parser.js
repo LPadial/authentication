@@ -13,7 +13,7 @@ $(function() {
 	    parseNotNullText : "Por favor, rellena el campo",
 	    parseNotEmptyText : "Por favor, rellena el campo",
 	    parseEmailText: "Por favor, introduce un email válido",
-	    parseNameText: "Por favor, introduce solo letras y/o números, y al menos 4 caracteres",
+	    parseNameText: "Por favor, introduce solo letras y al menos 4 caracteres",
 	    parsePasswordText: "La contraseña debe contener al menos"+" 1 mayúscula"+ ", 1 número"+" y 6 caracteres",
 	    parseSamePasswordText: "Las contraseñas deben coincidir",
 	    parseIntegerText : "Por favor, introduce un número válido",
