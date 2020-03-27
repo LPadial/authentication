@@ -92,11 +92,6 @@ $(function() {
         parser.displayMessageError("#inputEmail", error.message);
     }
 
-    $("#deleteYes").on("click", function(){
-        alert("Hola");
-    }
-    
-
 });
 
 function loadUserTable(users) {
