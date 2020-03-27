@@ -145,7 +145,7 @@ $(function() {
     });
 
     function onRegisterFail(error) {
-        parser.displayMessageError("#inputLogin", error);
+        parser.displayMessageError("#inputEmail", "Este email ya se encuentra registrado, por favor escoja otro");
     }
 
 });
