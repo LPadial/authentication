@@ -45,21 +45,16 @@ $(function() {
         }
     });
 
-    //Parse email
-    function handleEmail() {
-        return parser.parse('#inputEmail', parser.parseEmail);
-    }
-    $('#inputEmail').donetyping(handleEmail);
-    $('#inputEmail').change(handleEmail);
-    if($('#inputEmail').val()) {
-        handleEmail();
-    }
-
     //Delete user form
-    $("#deleteUserForm").submit(function(e) {
-        e.preventDefault();
+    function deleteUser(e) {
+        //e.preventDefault();
+
         alert("Hola");
-        if(handleEmail().ok) {
+        
+        let emailOk = parser.parse('#inputEmail', parser.parseEmail);
+
+        if(emailOk.ok) {
+            alert("Email correcto");
             let user_id = $("#deleteUserForm").prop("data-user-id");
             let user_email = $("#deleteUserForm").prop("data-user-email");
 
@@ -76,6 +71,7 @@ $(function() {
                     data: {id: user_id}
                 })
                 .done(function(data) {
+                    alert("Borrando fila");
                     $("#tr_u_"+user_id).remove();
 
                     user_id = "";
@@ -85,8 +81,12 @@ $(function() {
             }
         }
         
-        return false;
-    });
+        //return false;
+    }
+
+    //Parse email
+    $('#inputEmail').donetyping(deleteUser);
+    $('#inputEmail').change(deleteUser);
 
     function onDeleteFail(error) {
         parser.displayMessageError("#inputEmail", error.message);
