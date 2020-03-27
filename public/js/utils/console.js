@@ -85,7 +85,7 @@ $(function() {
     }
     
     function debug_console_index(i) {
-        let file_content_arr = file_content.split('\r\n');
+        let file_content_arr = file_content.split('\n');
         debugLine(file_content_arr[i]);
     }
     
